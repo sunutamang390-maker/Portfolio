@@ -1,0 +1,2 @@
+I am Sunita Tamang currently studying in BCA 6th semester. I want a portfolio that show cases my skills, interest, about myself and more. Include 
+Home, About Me, Skills, Projects, education, Experience, soft skills, Resume and contact. upon skills include html, css ,  js, git and GitHub, python for now keep the project section empty so that later when i build my own projects i gotta be include them by myself in the code.
