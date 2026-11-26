@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A simple guide to registering a .com.np domain, connecting Cloudflare and hosting a portfolio on GitHub Pages." />
+  <title>Connecting a Domain to My Portfolio | Sunita Tamang</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css" />
+  <style>
+    /* ---------- Post layout ---------- */
+    .post {
+      width: min(920px, 92%);
+      margin-inline: auto;
+      padding-block: 2.5rem 5rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.8rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .back-link:hover {
+      transform: translateX(-3px);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ---------- Hero ---------- */
+    .post-hero {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, #eef0ff 0%, #f7f9fc 65%, #eef6ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 2.75rem 3rem;
+      margin-bottom: 2.5rem;
+      box-shadow: var(--shadow);
+    }
+
+    .post-hero::after {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(99, 102, 241, 0.09);
+    }
+
+    .post-tag {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+
+    .post-hero h1 {
+      position: relative;
+      font-size: clamp(2rem, 5vw, 3rem);
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      max-width: 640px;
+    }
+
+    .post-meta {
+      position: relative;
+      color: var(--muted);
+      margin-top: 0.8rem;
+      font-size: 0.98rem;
+    }
+
+    /* ---------- Opening explanation ---------- */
+    .opening {
+      margin-bottom: 3rem;
+    }
+
+    .opening p.first {
+      font-size: 1.12rem;
+      font-weight: 500;
+      line-height: 1.8;
+      border-left: 4px solid var(--accent);
+      padding-left: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .concept-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .concept {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .concept:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(31, 42, 68, 0.12);
+    }
+
+    .concept-icon {
+      display: inline-grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--accent-soft);
+      font-size: 1.25rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .concept h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .concept p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .tip {
+      margin-top: 1.25rem;
+      background: #fff9e8;
+      border-left: 4px solid #e9a600;
+      border-radius: 12px;
+      padding: 0.95rem 1.2rem;
+      font-size: 0.92rem;
+      color: #6b5410;
+    }
+
+    /* ---------- Steps ---------- */
+    .steps-heading {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .steps-heading h2 {
+      font-size: 1.9rem;
+      letter-spacing: -0.8px;
+      white-space: nowrap;
+    }
+
+    .steps-heading::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .steps > li {
+      position: relative;
+      counter-increment: step;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2rem 1.75rem 4.5rem;
+      box-shadow: 0 6px 20px rgba(31, 42, 68, 0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .steps > li:hover {
+      transform: translateY(-3px);
+      border-color: #c9cdf7;
+      box-shadow: 0 16px 32px rgba(31, 42, 68, 0.1);
+    }
+
+    .steps > li::before {
+      content: counter(step, decimal-leading-zero);
+      position: absolute;
+      left: 1.5rem;
+      top: 1.7rem;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #818cf8, #4f46e5);
+      color: #fff;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+    }
+
+    .steps h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .steps p,
+    .steps li li {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .steps ul,
+    .steps ol {
+      padding-left: 1.25rem;
+      margin-top: 0.6rem;
+    }
+
+    .steps li li + li { margin-top: 0.3rem; }
+
+    .steps strong { color: var(--text); }
+
+    .sub-label {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent-dark);
+    }
+
+    code {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      padding: 0.12rem 0.42rem;
+      border-radius: 6px;
+      font-size: 0.88em;
+      word-break: break-word;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      font-size: 0.92rem;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 0.75rem 0.9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--accent-soft);
+      color: var(--accent-dark);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    td { color: var(--muted); }
+    tr:last-child td { border-bottom: none; }
+
+    /* ---------- Flow diagram ---------- */
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.8rem;
+      margin-top: 1.1rem;
+    }
+
+    .flow div {
+      background: var(--accent-soft);
+      border: 1px solid #dcdffa;
+      border-radius: 12px;
+      padding: 0.9rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--accent-dark);
+    }
+
+    .flow span {
+      display: block;
+      color: var(--muted);
+      font-weight: 400;
+      font-size: 0.86rem;
+      margin-top: 0.2rem;
+    }
+
+    /* ---------- Footer note ---------- */
+    .post-footer {
+      text-align: center;
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 640px) {
+      .post-hero { padding: 2rem 1.5rem; }
+      .steps > li { padding: 1.5rem 1.25rem 1.5rem 3.7rem; }
+      .steps > li::before {
+        left: 1rem;
+        top: 1.5rem;
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        font-size: 0.75rem;
+      }
+      .steps-heading h2 { font-size: 1.5rem; }
+      th, td { padding: 0.6rem; font-size: 0.85rem; }
+    }
+
+    @media print {
+      .back-link { display: none; }
+      .post-hero, .concept, .steps > li { box-shadow: none; }
+      .steps > li { break-inside: avoid; }
+      .post-hero { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <article class="post">
+    <a class="back-link" href="../index.html">← Back to portfolio</a>
+
+    <!-- <header class="post-hero">
+      <span class="post-tag">Domain · Cloudflare · GitHub Pages</span>
+      <h1>Connecting a Domain to My Portfolio</h1>
+      <p class="post-meta">Registering a .com.np domain, connecting Cloudflare and hosting the site on GitHub Pages.</p>
+    </header>
+
+    <!-- Opening explanation -->
+    <section class="opening">
+      <p class="first">
+        Firstly, let's know about the domain name — what it is, why we need it, why register in .com.np and cloudflare
+        .
+      </p>
+
+      <div class="concept-grid">
+        <div class="concept">
+          <span class="concept-icon">🌐</span>
+          <h3>Domain name</h3>
+          <p>
+            A domain name is the unique address given to our website on the internet so that people can easily find and visit our
+            website. We register a domain name in .com.np since it is a country code top-level domain (ccTLD) for Nepal, and it is free to register for Nepali citizens.
+          </p>
+        </div>
+        <div class="concept">
+          <span class="concept-icon">☁️</span>
+          <h3>Cloudflare</h3>
+          <p>
+            Cloudflare is the tool we use to connect our domain to our website.
+            Cloudflare provides nameservers, which in turn inform the
+            hosting service about our domain.
+          </p>
+        </div>
+      </div>
+
+      <div class="tip">
+        <strong>Remember:</strong> Registering a domain does not automatically
+        create a website. You also need somewhere to host your website — for
+        example, GitHub Pages.
+      </div>
+    </section>
+
+    <!-- Clear steps -->
+    <section class="steps-section">
+      <div class="steps-heading"><h2>Steps to follow</h2></div>
+
+      <ol class="steps">
+        <li>
+          <h3>Register your free .com.np domain</h3>
+          <p>The official portal is <code>register.com.np</code> for Nepal's .np domains.</p>
+
+          <span class="sub-label">1. Check availability</span>
+          <ul>
+            <li>Open <code>register.com.np</code>.</li>
+            <li>Find the domain search option ("Apply new domain").</li>
+            <li>Enter your preferred name, e.g. <code>sunitatamang.com.np</code>.</li>
+            <li>Click Search and check whether the domain is available.</li>
+            <li>If someone has already registered it, try another suitable name.</li>
+          </ul>
+
+          <span class="sub-label">2. Create an account</span>
+          <ul>
+            <li>Click <em>Register Now</em> if the domain is available.</li>
+            <li>Create an account using your email address.</li>
+            <li>Enter the required information and verify your email.</li>
+            <li>Log in to your account.</li>
+          </ul>
+
+          <span class="sub-label">3. Prepare the required documents</span>
+          <ul>
+            <li>Nepali citizenship certificate, passport, driving licence or another accepted identity document.</li>
+            <li>A cover letter requesting registration of your preferred domain.</li>
+            <li>Any other information requested by the portal.</li>
+          </ul>
+          <div class="tip">Personal domains must be based on the applicant's name as shown in the identity document. Business domains have different documentation requirements.</div>
+
+          <span class="sub-label">4. Fill in the application form</span>
+          <ul>
+            <li>Domain name</li>
+            <li>Applicant's name</li>
+            <li>Administrative contact details</li>
+            <li>Technical contact details</li>
+            <li>Primary nameserver and secondary nameserver</li>
+            <li>Supporting documents</li>
+          </ul>
+          <p>
+            <strong>Nameservers</strong> tell the internet which DNS service manages
+            your domain. You get two nameservers from your DNS provider — here,
+            Cloudflare.
+          </p>
+
+          <span class="sub-label">5. Submit your application</span>
+          <ul>
+            <li>Check all your information.</li>
+            <li>Upload the required documents.</li>
+            <li>Submit the application and wait for review and approval.</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Create a Cloudflare account</h3>
+          <ul>
+            <li>Visit the official Cloudflare website.</li>
+            <li>Click <em>Sign Up</em>.</li>
+            <li>Enter your email and create a password.</li>
+            <li>Verify your email address.</li>
+            <li>Log in to your Cloudflare dashboard. The Free plan is enough.</li>
+          </ul>
+        </li>
+
+        <li>
+          <h3>Add your .com.np domain to Cloudflare</h3>
+          <ul>
+            <li>Open your Cloudflare dashboard.</li>
+            <li>Go to <strong>Domains</strong>.</li>
+            <li>Select <em>Onboard a domain</em>.</li>
+            <li>Enter your domain name, e.g. <code>sunitatamang.com.np</code>.</li>
+            <li>Choose the option to add or scan DNS records.</li>
+            <li>Choose the <strong>Free</strong> plan and continue.</li>
+          </ul>
+          <p>
+            Cloudflare will provide two nameservers, for example
+            <code>alice.ns.cloudflare.com</code> and <code>bob.ns.cloudflare.com</code>.
+            These are only examples — use the real ones shown in your account.
+          </p>
+          <div class="tip">Cloudflare needs to recognise your domain before it can onboard it. If it is not accepted before registration approval, finish registration first with an available DNS provider, then add the domain to Cloudflare and update the nameservers through the .np portal.</div>
+        </li>
+
+        <li>
+          <h3>Connect Cloudflare nameservers to your .com.np domain</h3>
+          <p>This is the most important connection step.</p>
+          <ul>
+            <li>Go back to your <code>register.com.np</code> account.</li>
+            <li>Open the domain management or modification section.</li>
+            <li>Find the nameserver settings.</li>
+            <li>Enter the two nameservers provided by Cloudflare.</li>
+            <li>Save or submit the modification.</li>
+          </ul>
+          <table>
+            <thead><tr><th>Field</th><th>Example value</th></tr></thead>
+            <tbody>
+              <tr><td>Primary nameserver</td><td><code>alice.ns.cloudflare.com</code></td></tr>
+              <tr><td>Secondary nameserver</td><td><code>bob.ns.cloudflare.com</code></td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:1rem">
+            Use your actual Cloudflare nameservers, not the examples. After
+            updating, wait for the change to take effect. Cloudflare shows the
+            domain as <strong>Active</strong> when setup is complete.
+          </p>
+        </li>
+
+        <li>
+          <h3>Connect your website to Cloudflare</h3>
+          <p>
+            The domain is now with Cloudflare, but Cloudflare still needs to know
+            where your website is hosted. Here the portfolio is uploaded to
+            GitHub, e.g. <code>https://yourusername.github.io/portfolio/</code>.
+          </p>
+          <span class="sub-label">In GitHub</span>
+          <ul>
+            <li>Open your repository and go to <strong>Settings</strong>.</li>
+            <li>Find <strong>Pages</strong>.</li>
+            <li>Enter your custom domain in the Custom domain field.</li>
+            <li>Save the changes.</li>
+          </ul>
+          <span class="sub-label">In Cloudflare → DNS → Records</span>
+          <p>Add the records required by GitHub Pages. For a root domain, the typical records are:</p>
+          <table>
+            <thead><tr><th>Type</th><th>Name</th><th>Value</th></tr></thead>
+            <tbody>
+              <tr><td>A</td><td>@</td><td><code>185.199.108.153</code></td></tr>
+              <tr><td>A</td><td>@</td><td><code>185.199.109.153</code></td></tr>
+              <tr><td>A</td><td>@</td><td><code>185.199.110.153</code></td></tr>
+              <tr><td>A</td><td>@</td><td><code>185.199.111.153</code></td></tr>
+              <tr><td>CNAME</td><td>www</td><td><code>yourusername.github.io</code></td></tr>
+            </tbody>
+          </table>
+          <div class="tip">These are GitHub Pages configuration examples. Follow GitHub's current custom-domain instructions and use the records it specifies for your repository.</div>
+        </li>
+
+        <li>
+          <h3>Enable security and HTTPS</h3>
+          <ul>
+            <li>Open Cloudflare and select your domain.</li>
+            <li>Go to <strong>SSL/TLS</strong>.</li>
+            <li>Check the SSL/TLS settings.</li>
+            <li>Enable HTTPS on your hosting provider too — GitHub Pages supports HTTPS.</li>
+          </ul>
+          <p>Cloudflare also provides protection against malicious traffic, DNS management, DDoS protection, caching, performance features and SSL/TLS options.</p>
+          <div class="tip">For GitHub Pages, initially keep the DNS records as <strong>DNS only</strong> (grey cloud) while testing the custom domain and HTTPS. Explore Cloudflare proxy settings later.</div>
+        </li>
+
+        <li>
+          <h3>See how everything works together</h3>
+          <div class="flow">
+            <div>Register your domain<span>register.com.np — sunitatamang.com.np</span></div>
+            <div>Cloudflare<span>DNS management and security</span></div>
+            <div>GitHub Pages<span>Hosts your portfolio website</span></div>
+            <div>Visitors<span>Open sunitatamang.com.np</span></div>
+          </div>
+        </li>
+
+        <li>
+          <h3>Purpose of each platform</h3>
+          <table>
+            <thead><tr><th>Platform</th><th>Main purpose</th><th>Cost</th></tr></thead>
+            <tbody>
+              <tr><td>register.com.np</td><td>Register your .com.np domain name</td><td>Free registration</td></tr>
+              <tr><td>Cloudflare</td><td>DNS management, security, HTTPS options</td><td>Free plan</td></tr>
+              <tr><td>GitHub Pages</td><td>Hosts your portfolio website files</td><td>Free</td></tr>
+            </tbody>
+          </table>
+        </li>
+      </ol>
+    </section>
+
+    <footer class="post-footer">Sunita Tamang · BCA 6th Semester</footer>
+  </article>
+</body>
+</html>
